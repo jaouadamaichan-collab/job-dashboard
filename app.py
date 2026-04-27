@@ -35,7 +35,7 @@ postes = ["Directeur Innovation", "Chargé de Sourcing", "Open Innovation Projec
 selected_postes = st.sidebar.multiselect("Postes cibles", postes, default=postes)
 
 # Filtre Contrat
-contrats = st.sidebar.multiselect("Type de contrat", ["CDI", "CDD", "Alternance"], default=["CDI"])
+selected_contrat = st.sidebar.multiselect("Type de contrat", ["CDI", "CDD", "Alternance"], default=["CDI"])
 
 # Filtre Salaire
 min_salary = st.sidebar.slider("Salaire minimum (€/an)", 30000, 150000, 45000, step=5000)
@@ -44,7 +44,7 @@ min_salary = st.sidebar.slider("Salaire minimum (€/an)", 30000, 150000, 45000,
 mask = (
     df['Region'].isin(selected_regions) & 
     df['Poste'].isin(selected_postes) & 
-    df['Contrat'].isin(selected_contrat) &
+    df['Contrat'].isin(selected_contrat) & 
     (df['Salaire'] >= min_salary)
 )
 filtered_df = df[mask]
